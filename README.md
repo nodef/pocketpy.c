@@ -25,7 +25,7 @@
 <a href="https://deepwiki.com/pocketpy/pocketpy"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
 </p>
 
-pocketpy is a portable Python 3.x interpreter, written in C11.
+pocketpy is a portable Python 3.x interpreter, written in C11 - by [blueloveTH](https://github.com/blueloveTH).
 It aims to be an alternative to Lua for game scripting, with elegant syntax, powerful features and competitive performance.
 pocketpy has no dependencies other than the C standard library, which can be easily integrated into your C/C++ project.
 Developers are able to write Python bindings via C-API or pybind11 compatible interfaces.
@@ -36,6 +36,28 @@ Please see https://pocketpy.dev for details and try the following resources.
 + [Godot Extension](https://github.com/pocketpy/godot-pocketpy): Use pocketpy in Godot Engine
 + [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=pocketpy.pocketpy): Debug and profile pocketpy scripts in VSCode
 + [Flutter Plugin](https://pub.dev/packages/pocketpy): Use pocketpy in Flutter apps
+
+## Installation
+
+Run:
+```bash
+$ npm i pocketpy.c
+```
+
+And then include `pocketpy.h` as follows:
+```c
+#include "node_modules/pocketpy.c/pocketpy.h"
+```
+
+You may also want to include `pocketpy.c` as follows:
+```c
+#ifndef __POCKETPY_C__
+#define __POCKETPY_C__
+#include "node_modules/pocketpy.c/pocketpy.c"
+#endif
+```
+
+This will include both the function declaration and their definitions into a single file.
 
 ## Supported Platforms
 
@@ -56,8 +78,7 @@ You have two options to integrate pkpy into your project.
 
 #### Use the single header file
 
-Download the `pocketpy.h` and `pocketpy.c` on our [GitHub Release](https://github.com/pocketpy/pocketpy/releases) page.
-And `#include` it in your project.
+Include the `pocketpy.h` and `pocketpy.c` in your project.
 
 #### Use CMake
 
@@ -241,3 +262,10 @@ Your sponsorship will help us develop pkpy continuously.
 ## License
 
 [MIT License](http://opensource.org/licenses/MIT)
+
+<br>
+<br>
+
+
+[![ORG](https://img.shields.io/badge/org-nodef-green?logo=Org)](https://nodef.github.io)
+![](https://ga-beacon.deno.dev/G-RC63DPBH3P:SH3Eq-NoQ9mwgYeHWxu7cw/github.com/nodef/pocketpy.c)
