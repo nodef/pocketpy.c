@@ -1,0 +1,23 @@
+{
+  "name": "pocketpy.c",
+  "version": "2.1.3",
+  "description": "Portable Python 3.x Interpreter in Modern C for Game Scripting; pocketpy (2022).",
+  "keywords": [
+    "c",
+    "library",
+    "python",
+    "interpreter",
+    "scripting",
+    "game"
+  ],
+  "homepage": "https://github.com/nodef/pocketpy.c#readme",
+  "bugs": {
+    "url": "https://github.com/nodef/pocketpy.c/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodef/pocketpy.c.git"
+  },
+  "license": "MIT",
+  "main": "pocketpy.h"
+}
