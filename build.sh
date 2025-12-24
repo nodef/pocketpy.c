@@ -1,31 +1,40 @@
 #!/usr/bin/env bash
-URL="https://excellmedia.dl.sourceforge.net/project/asio/asio/1.36.0%20%28Stable%29/boost_asio_1_36_0.zip?viasf=1"
-ZIP="${URL##*/}"
-ZIP="${ZIP%%\?*}"
-DIR="${ZIP%.zip}"
-mkdir -p .build
-cd .build
+# Fetch the latest version of the library
+fetch() {
+if [ -d "pocketpy" ]; then return; fi
+URL1="https://github.com/pocketpy/pocketpy/releases/download/v2.1.4/pocketpy.c"
+URL2="https://github.com/pocketpy/pocketpy/releases/download/v2.1.4/pocketpy.h"
+FILE1="${URL1##*/}"
+FILE2="${URL2##*/}"
 
 # Download the release
-if [ ! -f "$ZIP" ]; then
-  echo "Downloading $ZIP from $URL ..."
-  curl -L "$URL" -o "$ZIP"
+if [ ! -d "pocketpy" ]; then
+  mkdir -p pocketpy
+  echo "Downloading $FILE1 from $URL1 ..."
+  curl -L "$URL1" -o "pocketpy/$FILE1"
+  echo "Downloading $FILE2 from $URL2 ..."
+  curl -L "$URL2" -o "pocketpy/$FILE2"
   echo ""
 fi
+}
 
-# Unzip the release
-if [ ! -d "$DIR" ]; then
-  echo "Unzipping $ZIP to .build/$DIR ..."
-  cp "$ZIP" "$ZIP.bak"
-  unzip -q "$ZIP"
-  rm "$ZIP"
-  mv "$ZIP.bak" "$ZIP"
-  echo ""
-fi
 
-# Copy the libs to the package directory
-echo "Copying libs to boost/ ..."
-rm -rf ../boost
-mkdir -p ../boost
-cp -rf "$DIR/boost"/* ../boost/
-echo ""
+# Test the project
+test() {
+echo "Running 01-basic.c ..."
+clang -I. -o 01.exe examples/01-basic.c      && ./01.exe && echo -e "\n"
+echo "Running 02-embedding.c ..."
+clang -I. -o 02.exe examples/02-embedding.c  && ./02.exe && echo -e "\n"
+echo "Running 03-extension.c ..."
+clang -I. -o 03.exe examples/03-extension.c  && ./03.exe && echo -e "\n"
+echo "Running 04-advanced.c ..."
+clang -I. -o 04.exe examples/04-advanced.c   && ./04.exe && echo -e "\n"
+echo "Running 05-demo.c ..."
+clang -I. -o 05.exe examples/05-demo.c && ./05.exe && echo -e "\n"
+}
+
+
+# Main script
+if [[ "$1" == "test" ]]; then test
+elif [[ "$1" == "fetch" ]]; then fetch
+else echo "Usage: $0 {fetch|test}"; fi

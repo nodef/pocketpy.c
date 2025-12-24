@@ -1,9 +1,8 @@
-# Library files
-pocketpy
-pocketpy.h
-
-# Build directory
+# Build artifacts
 .build/
+*.exe
+*.exp
+*.lib
 
 # Logs
 logs

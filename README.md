@@ -5,7 +5,7 @@
 <a title="Build" href="https://github.com/pocketpy/pocketpy/actions/workflows" >
 <img src="https://github.com/pocketpy/pocketpy/actions/workflows/main.yml/badge.svg" /></a>
 <!-- Codecov -->
-<a href="https://codecov.io/gh/pocketpy/pocketpy" > 
+<a href="https://codecov.io/gh/pocketpy/pocketpy" >
 <img src="https://codecov.io/gh/pocketpy/pocketpy/branch/main/graph/badge.svg?token=TI9KAFL0RG"/></a>
 <!-- C11 -->
 <a href="https://en.wikipedia.org/wiki/C11_(C_standard_revision)">
@@ -40,24 +40,44 @@ Please see https://pocketpy.dev for details and try the following resources.
 ## Installation
 
 Run:
-```bash
+
+```sh
 $ npm i pocketpy.c
 ```
 
 And then include `pocketpy.h` as follows:
+
 ```c
+// main.c
+#define POCKETPY_IMPLEMENTATION
 #include "node_modules/pocketpy.c/pocketpy.h"
+
+int main() { /* ... */ }
 ```
 
-You may also want to include `pocketpy.c` as follows:
+And then compile with `clang` or `gcc` as usual.
+
+```bash
+$ clang main.c  # or, use gcc
+$ gcc   main.c
+```
+
+You may also use a simpler approach:
+
 ```c
-#ifndef __POCKETPY_C__
-#define __POCKETPY_C__
-#include "node_modules/pocketpy.c/pocketpy.c"
-#endif
+// main.c
+#define POCKETPY_IMPLEMENTATION
+#include <pocketpy.h>
+
+int main() { /* ... */ }
 ```
 
-This will include both the function declaration and their definitions into a single file.
+If you add the path `node_modules/pocketpy.c` to your compiler's include paths.
+
+```bash
+$ clang -I./node_modules/pocketpy.c main.c  # or, use gcc
+$ gcc   -I./node_modules/pocketpy.c main.c
+```
 
 ## Supported Platforms
 
@@ -78,7 +98,7 @@ You have two options to integrate pkpy into your project.
 
 #### Use the single header file
 
-Include the `pocketpy.h` and `pocketpy.c` in your project.
+Include the `pocketpy.h` in your project.
 
 #### Use CMake
 
@@ -267,6 +287,6 @@ Your sponsorship will help us develop pkpy continuously.
 <br>
 
 
+[![SRC](https://img.shields.io/badge/src-repo-green?logo=Org)](https://github.com/pocketpy/pocketpy)
 [![ORG](https://img.shields.io/badge/org-nodef-green?logo=Org)](https://nodef.github.io)
 ![](https://ga-beacon.deno.dev/G-RC63DPBH3P:SH3Eq-NoQ9mwgYeHWxu7cw/github.com/nodef/pocketpy.c)
-[![SRC](https://img.shields.io/badge/src-repo-green?logo=Org)](https://github.com/pocketpy/pocketpy)
