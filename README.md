@@ -50,33 +50,23 @@ And then include `pocketpy.h` as follows:
 ```c
 // main.c
 #define POCKETPY_IMPLEMENTATION
-#include "node_modules/pocketpy.c/pocketpy.h"
-
-int main() { /* ... */ }
-```
-
-And then compile with `clang` or `gcc` as usual.
-
-```bash
-$ clang main.c  # or, use gcc
-$ gcc   main.c
-```
-
-You may also use a simpler approach:
-
-```c
-// main.c
-#define POCKETPY_IMPLEMENTATION
 #include <pocketpy.h>
 
 int main() { /* ... */ }
 ```
 
-If you add the path `node_modules/pocketpy.c` to your compiler's include paths.
+Finally, compile while adding the path `node_modules/pocketpy.c` to your compiler's include paths.
 
 ```bash
 $ clang -I./node_modules/pocketpy.c main.c  # or, use gcc
 $ gcc   -I./node_modules/pocketpy.c main.c
+```
+
+You may also use a simpler approach with the [cpoach](https://www.npmjs.com/package/cpoach.sh) tool, which automatically adds the necessary include paths of all the installed dependencies for your project.
+
+```bash
+$ cpoach clang main.c  # or, use gcc
+$ cpoach gcc   main.c
 ```
 
 ## Supported Platforms
@@ -287,6 +277,7 @@ Your sponsorship will help us develop pkpy continuously.
 <br>
 
 
+[![](https://raw.githubusercontent.com/qb40/designs/gh-pages/0/image/11.png)](https://wolfram77.github.io)<br>
 [![SRC](https://img.shields.io/badge/src-repo-green?logo=Org)](https://github.com/pocketpy/pocketpy)
 [![ORG](https://img.shields.io/badge/org-nodef-green?logo=Org)](https://nodef.github.io)
 ![](https://ga-beacon.deno.dev/G-RC63DPBH3P:SH3Eq-NoQ9mwgYeHWxu7cw/github.com/nodef/pocketpy.c)

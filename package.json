@@ -1,6 +1,6 @@
 {
   "name": "pocketpy.c",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Portable Python 3.x Interpreter in Modern C for Game Scripting; pocketpy (2022).",
   "keywords": [
     "c",
